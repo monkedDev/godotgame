@@ -1,15 +1,15 @@
 extends CharacterBody2D
 
-## Скорость движения (пикселей в секунду)
-@export var move_speed: float = 8.0
+## Размер клетки в пикселях (по умолчанию 16)
+@export var cell_size: int = 16
 
-## Размер тайла в пикселях
-const TILE_SIZE: int = 16
+## Скорость плавного перемещения (пикселей в секунду)
+@export var move_speed: float = 10.0
 
-## Флаг, показывающий, может ли игрок двигаться (для пошаговости)
+## Флаг, показывающий, может ли игрок делать новый ход
 var can_move: bool = true
 
-## Внутренний флаг для отслеживания движения
+## Внутренний флаг для отслеживания анимации движения
 var _is_moving: bool = false
 
 ## Целевая позиция для перемещения
@@ -23,36 +23,44 @@ func _ready() -> void:
 	_is_moving = false
 
 
-func _physics_process(_delta: float) -> void:
-	"""Обработка физики каждый кадр."""
+func _physics_process(delta: float) -> void:
+	"""Обработка физики каждый кадр для плавного движения."""
 	if _is_moving:
 		# Плавное движение к целевой позиции
-		global_position = global_position.lerp(_target_position, move_speed * _delta)
+		global_position = global_position.lerp(_target_position, move_speed * delta)
 		
-		# Проверка достижения цели
+		# Проверка достижения цели (порог 0.5 пикселя)
 		if global_position.distance_to(_target_position) < 0.5:
 			global_position = _target_position
 			_is_moving = false
 			can_move = true
 
 
-func _input(event: InputEvent) -> void:
-	"""Обработка ввода для пошагового движения."""
+func _unhandled_input(event: InputEvent) -> void:
+	"""Обработка ввода для пошагового движения (одно нажатие = один шаг)."""
+	# Игнорируем повторные события при зажатой клавише
+	if event.echo:
+		return
+	
+	# Обрабатываем только нажатия клавиш
+	if not (event is InputEventKey) or not event.pressed:
+		return
+	
+	# Если игрок не может двигаться или уже движется, игнорируем ввод
 	if not can_move or _is_moving:
 		return
 	
-	var direction: Vector2 = Vector2.ZERO
+	var direction: Vector2 = _get_direction_from_input(event.keycode)
 	
-	if event is InputEventKey and event.pressed:
-		direction = _get_direction_from_input(event)
-		
-		if direction != Vector2.ZERO:
-			_move_in_direction(direction)
+	if direction != Vector2.ZERO:
+		_move_in_direction(direction)
+		# Помечаем событие как обработанное
+		get_viewport().set_input_as_handled()
 
 
-func _get_direction_from_input(event: InputEventKey) -> Vector2:
-	"""Получение направления движения из нажатой клавиши."""
-	match event.keycode:
+func _get_direction_from_input(keycode: Key) -> Vector2:
+	"""Получение направления движения из кода клавиши."""
+	match keycode:
 		KEY_W, KEY_UP:
 			return Vector2.UP
 		KEY_S, KEY_DOWN:
@@ -66,7 +74,7 @@ func _get_direction_from_input(event: InputEventKey) -> Vector2:
 
 
 func _move_in_direction(direction: Vector2) -> void:
-	"""Перемещение игрока на одну клетку в указанном направлении."""
+	"""Перемещение игрока ровно на одну клетку в указанном направлении."""
 	can_move = false
 	_is_moving = true
-	_target_position = global_position + direction * TILE_SIZE
+	_target_position = global_position + direction * cell_size
