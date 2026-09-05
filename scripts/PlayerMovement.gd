@@ -30,6 +30,8 @@ func _ready() -> void:
 	_target_position = global_position
 	can_move = true
 	_is_moving = false
+	# Добавляем игрока в группу player
+	add_to_group("player")
 	# Находим TileMapLayer в сцене
 	_tile_map = get_tree().get_first_node_in_group("tile_map") as TileMapLayer
 
@@ -127,8 +129,8 @@ func _is_wall_at_position(position: Vector2) -> bool:
 	# Преобразуем глобальную позицию в координаты тайла
 	var tile_coords: Vector2i = _tile_map.local_to_map(position - global_position + _tile_map.position)
 	
-	# Получаем источник тайла
-	var tile_data: TileData = _tile_map.get_cell_tile_data(0, tile_coords)
+	# Получаем источник тайла (в Godot 4.x TileMapLayer принимает только один аргумент)
+	var tile_data: TileData = _tile_map.get_cell_tile_data(tile_coords)
 	if not tile_data:
 		return false
 	

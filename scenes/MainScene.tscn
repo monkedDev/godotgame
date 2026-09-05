@@ -15,6 +15,7 @@
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_set = TileSet.new()
 tile_set.tile_size = Vector2i(16, 16)
+groups = ["tile_map"]
 
 [node name="TurnManager" type="Node" parent="."]
 script = ExtResource("3_turn")
@@ -22,14 +23,13 @@ script = ExtResource("3_turn")
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(128, 128)
 script = ExtResource("1_player")
-groups = ["player"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 texture = ExtResource("5_player_tex")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 
-[node name="Enemy" type="CharacterBody2D" parent="."]
+[node name="Enemy" type="Node2D" parent="."]
 position = Vector2(256, 128)
 script = ExtResource("2_enemy")
 

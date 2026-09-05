@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Node2D
 
 ## Размер клетки в пикселях
 @export var cell_size: int = 16
