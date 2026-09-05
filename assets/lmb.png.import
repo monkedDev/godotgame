@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbvv2t6eve411"
-path="res://.godot/imported/colored-transparent.png-c4392f4ca54f785dc60c91afa9469f2f.ctex"
+uid="uid://8dtegkn2th4o"
+path="res://.godot/imported/lmb.png-df27333754bd65c4c68f8436a9936f8c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Tilesheet/colored-transparent.png"
-dest_files=["res://.godot/imported/colored-transparent.png-c4392f4ca54f785dc60c91afa9469f2f.ctex"]
+source_file="res://assets/lmb.png"
+dest_files=["res://.godot/imported/lmb.png-df27333754bd65c4c68f8436a9936f8c.ctex"]
 
 [params]
 

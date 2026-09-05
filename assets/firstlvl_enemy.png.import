@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsq0htw5vp1jk"
-path="res://.godot/imported/tileset_legacy.png-756dc070055cfd1019c183afaa31fd66.ctex"
+uid="uid://cxy4qnre00kqi"
+path="res://.godot/imported/firstlvl_enemy.png-2054d335331d9ba422553d3ee798305d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Tilemap/tileset_legacy.png"
-dest_files=["res://.godot/imported/tileset_legacy.png-756dc070055cfd1019c183afaa31fd66.ctex"]
+source_file="res://assets/firstlvl_enemy.png"
+dest_files=["res://.godot/imported/firstlvl_enemy.png-2054d335331d9ba422553d3ee798305d.ctex"]
 
 [params]
 

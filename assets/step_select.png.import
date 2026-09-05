@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp17w10wvbg6r"
-path="res://.godot/imported/monochrome_packed.png-d8f4ca65e193d9c64afe08687ae70664.ctex"
+uid="uid://c63oote7i7elp"
+path="res://.godot/imported/step_select.png-09edb3e08c1a497b27bd1caba7a2e828.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Tilesheet/monochrome_packed.png"
-dest_files=["res://.godot/imported/monochrome_packed.png-d8f4ca65e193d9c64afe08687ae70664.ctex"]
+source_file="res://assets/step_select.png"
+dest_files=["res://.godot/imported/step_select.png-09edb3e08c1a497b27bd1caba7a2e828.ctex"]
 
 [params]
 
