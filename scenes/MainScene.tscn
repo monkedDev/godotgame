@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq8x9v2k3m7n1"]
+
+[ext_resource type="Script" path="res://scripts/PlayerMovement.gd" id="1_player"]
+[ext_resource type="Texture2D" path="res://assets/sprites/Tilesheet/monochrome.png" id="2_texture"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+transform = Transform2D(1, 0, 0, 1, 0, 0)
+script = ExtResource("1_player")
+
+[node name="Sprite" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_texture")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
