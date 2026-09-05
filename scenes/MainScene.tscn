@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0x1k2y3z4a5b"]
+
+[ext_resource type="Script" path="res://scripts/PlayerMovement.gd" id="1_player"]
+[ext_resource type="Texture2D" path="res://assets/player.png" id="2_player_tex"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = null
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(128, 128)
+script = ExtResource("1_player")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_player_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
